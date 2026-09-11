@@ -1,0 +1,9 @@
+customer_id,customer_code,first_name,last_name,email,registration_date,customer_segment,credit_limit
+1,CUST-000001,James,Smith,james.smith@example.com,2023-01-15,Enterprise,10000.0
+2,CUST-000002,Jennifer,Johnson,jennifer.johnson@example.com,2023-02-20,Corporate,5000.0
+3,CUST-000003,Robert,Williams,robert.williams@example.com,2023-03-10,SMB,2500.0
+4,CUST-000004,Sarah,Brown,sarah.brown@example.com,2023-04-05,Consumer,1000.0
+5,CUST-000005,Michael,Jones,michael.jones@example.com,2023-05-12,SMB,2500.0
+6,CUST-000006,Patricia,Miller,patricia.miller@example.com,2023-06-18,Enterprise,10000.0
+7,CUST-000007,Linda,Davis,linda.davis@example.com,2023-07-22,Corporate,5000.0
+8,CUST-000008,Elizabeth,Garcia,elizabeth.garcia@example.com,2023-08-30,Consumer,1000.0

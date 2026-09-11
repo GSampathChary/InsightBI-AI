@@ -1,0 +1,9 @@
+product_id,sku,product_name,category,subcategory,unit_cost,unit_price
+101,SKU-TEC-LAP-0101,Enterprise Laptop Pro 15,Technology,Laptops,800.0,1200.0
+102,SKU-TEC-MON-0102,UltraWide Monitor 34-Inch,Technology,Monitors,360.0,600.0
+103,SKU-FUR-CHA-0103,Ergonomic Office Chair,Furniture,Office Chairs,200.0,350.0
+104,SKU-FUR-DES-0104,Standing Desk Electric,Furniture,Desks & Tables,400.0,700.0
+105,SKU-SOF-CLA-0105,Cloud License Enterprise,Software,SaaS Subscriptions,40.0,200.0
+106,SKU-TEC-SMA-0106,Smartphone Pro Max,Technology,Smartphones,600.0,999.0
+107,SKU-OFF-STO-0107,Storage Filing Cabinet,Office Supplies,Storage & Organization,50.0,120.0
+108,SKU-CON-AUD-0108,Noise Cancelling Headphones,Consumer Electronics,Audio & Headphones,120.0,250.0

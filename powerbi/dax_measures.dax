@@ -1,0 +1,137 @@
+// =============================================================================
+// InsightBI AI — Production DAX Metric Library
+// File: powerbi/dax_measures.dax
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. CORE FINANCIAL MEASURES
+// -----------------------------------------------------------------------------
+
+Total Revenue = 
+SUM(fact_sales[revenue])
+
+Total Cost = 
+SUM(fact_sales[cost])
+
+Total Profit = 
+SUM(fact_sales[profit])
+
+Profit Margin % = 
+DIVIDE([Total Profit], [Total Revenue], 0)
+
+Total Orders = 
+DISTINCTCOUNT(fact_sales[order_id])
+
+Total Customers = 
+DISTINCTCOUNT(fact_sales[customer_id])
+
+Average Order Value (AOV) = 
+DIVIDE([Total Revenue], [Total Orders], 0)
+
+Average Order Profit = 
+DIVIDE([Total Profit], [Total Orders], 0)
+
+Units Sold = 
+SUM(fact_sales[quantity])
+
+Average Units Per Order = 
+DIVIDE([Units Sold], [Total Orders], 0)
+
+Average Discount % = 
+AVERAGE(fact_sales[discount])
+
+// -----------------------------------------------------------------------------
+// 2. TIME INTELLIGENCE & COMPARISON MEASURES
+// -----------------------------------------------------------------------------
+
+YTD Revenue = 
+TOTALYTD([Total Revenue], dim_date[date])
+
+YTD Profit = 
+TOTALYTD([Total Profit], dim_date[date])
+
+Prior Year Revenue = 
+CALCULATE(
+    [Total Revenue],
+    SAMEPERIODLASTYEAR(dim_date[date])
+)
+
+YoY Revenue Growth = 
+[Total Revenue] - [Prior Year Revenue]
+
+YoY Revenue Growth % = 
+DIVIDE(
+    [YoY Revenue Growth],
+    [Prior Year Revenue],
+    0
+)
+
+Prior Month Revenue = 
+CALCULATE(
+    [Total Revenue],
+    DATEADD(dim_date[date], -1, MONTH)
+)
+
+MoM Revenue Growth % = 
+DIVIDE(
+    [Total Revenue] - [Prior Month Revenue],
+    [Prior Month Revenue],
+    0
+)
+
+Rolling 3M Revenue = 
+CALCULATE(
+    [Total Revenue],
+    DATESINPERIOD(dim_date[date], MAX(dim_date[date]), -3, MONTH)
+)
+
+Rolling 12M Revenue = 
+CALCULATE(
+    [Total Revenue],
+    DATESINPERIOD(dim_date[date], MAX(dim_date[date]), -12, MONTH)
+)
+
+// -----------------------------------------------------------------------------
+// 3. CUSTOMER ANALYTICAL & RFM MEASURES
+// -----------------------------------------------------------------------------
+
+Repeat Customer Count = 
+CALCULATE(
+    [Total Customers],
+    FILTER(
+        dim_customer,
+        [Total Orders] > 1
+    )
+)
+
+Customer Retention Rate % = 
+DIVIDE(
+    [Repeat Customer Count],
+    [Total Customers],
+    0
+)
+
+Customer Lifetime Value (CLV) = 
+DIVIDE(
+    [Total Revenue],
+    [Total Customers],
+    0
+)
+
+Customer Average Order Frequency = 
+DIVIDE(
+    [Total Orders],
+    [Total Customers],
+    0
+)
+
+// Dynamic RFM Scoring Calculated Measures
+RFM Recency Days = 
+VAR LastOrderDate = MAX(fact_sales[created_at])
+RETURN DATEDIFF(LastOrderDate, TODAY(), DAY)
+
+RFM Frequency = 
+[Total Orders]
+
+RFM Monetary = 
+[Total Revenue]

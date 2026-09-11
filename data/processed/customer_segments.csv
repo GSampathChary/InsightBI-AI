@@ -1,0 +1,6 @@
+customer_id,customer_code,first_name,last_name,email,recency_days,frequency_count,monetary_value,r_score,f_score,m_score,rfm_score,rfm_segment
+1,CUST-000001,James,Smith,james.smith@example.com,12,28,14500.5,5,5,5,555,VIP / Champions
+2,CUST-000002,Jennifer,Johnson,jennifer.johnson@example.com,18,19,9820.0,5,4,4,544,VIP / Champions
+3,CUST-000003,Robert,Williams,robert.williams@example.com,35,14,6450.25,4,4,4,444,Loyal Customers
+4,CUST-000004,Sarah,Brown,sarah.brown@example.com,42,11,4890.0,3,3,3,333,Potential Loyalists
+5,CUST-000005,Michael,Jones,michael.jones@example.com,95,3,850.0,1,1,1,111,At-Risk / Lost
