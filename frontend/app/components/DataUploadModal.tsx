@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Upload, X, CheckCircle, AlertCircle, FileText, Loader2, Download } from 'lucide-react';
+import { formatINR } from '../utils/format';
 
 interface DataUploadModalProps {
   isOpen: boolean;
@@ -69,9 +70,9 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
 
   const downloadSampleTemplate = () => {
     const csvContent = "order_id,date,customer_id,product_id,product_name,category,quantity,unit_price,unit_cost,discount,region_name\n" +
-      "ORD-0001,2024-01-15,101,501,Enterprise Laptop Pro,Technology,2,1200.00,800.00,0.05,North America East\n" +
-      "ORD-0002,2024-01-18,102,502,UltraWide Monitor,Technology,3,600.00,360.00,0.00,North America West\n" +
-      "ORD-0003,2024-02-01,103,503,Ergonomic Chair,Furniture,5,350.00,200.00,0.10,South Region\n";
+      "ORD-0001,2024-01-15,101,501,Enterprise Laptop Pro,Technology,2,120000.00,80000.00,0.05,North India\n" +
+      "ORD-0002,2024-01-18,102,502,UltraWide Monitor,Technology,3,60000.00,36000.00,0.00,West India\n" +
+      "ORD-0003,2024-02-01,103,503,Ergonomic Chair,Furniture,5,35000.00,20000.00,0.10,South India\n";
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -141,8 +142,8 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
             </div>
             <div className="grid grid-cols-3 gap-2 pt-2 border-t border-emerald-500/20 text-slate-300">
               <div><span className="text-slate-400">Records:</span> {result.row_count?.toLocaleString()}</div>
-              <div><span className="text-slate-400">Revenue:</span> ${result.total_revenue?.toLocaleString()}</div>
-              <div><span className="text-slate-400">Profit:</span> ${result.total_profit?.toLocaleString()}</div>
+              <div><span className="text-slate-400">Revenue:</span> {formatINR(result.total_revenue)}</div>
+              <div><span className="text-slate-400">Profit:</span> {formatINR(result.total_profit)}</div>
             </div>
           </div>
         )}

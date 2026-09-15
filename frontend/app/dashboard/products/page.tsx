@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Package, Tag, Percent } from 'lucide-react';
 import DataModeNotice from '../../components/DataModeNotice';
+import { formatINR } from '../../utils/format';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
@@ -97,8 +98,8 @@ export default function ProductsPage() {
               <tr key={idx} className="hover:bg-slate-800/50">
                 <td className="p-3 font-semibold text-slate-200">{prod.product_name}</td>
                 <td className="p-3">{prod.category}</td>
-                <td className="p-3 font-bold text-cyan-400">${prod.revenue?.toLocaleString()}</td>
-                <td className="p-3 text-emerald-400">${prod.profit?.toLocaleString()}</td>
+                <td className="p-3 font-bold text-cyan-400">{formatINR(prod.revenue)}</td>
+                <td className="p-3 text-emerald-400">{formatINR(prod.profit)}</td>
                 <td className="p-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold">
                     {prod.profit_margin_percent}%

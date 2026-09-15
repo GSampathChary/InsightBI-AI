@@ -23,7 +23,7 @@ class DimRegion(Base):
 
     region_id = Column(Integer, primary_key=True, index=True)
     region_name = Column(String(50), nullable=False)
-    country = Column(String(50), default="United States", nullable=False)
+    country = Column(String(50), default="India", nullable=False)
     state = Column(String(50), nullable=False)
     city = Column(String(50), nullable=False)
     territory = Column(String(50), nullable=False)

@@ -34,7 +34,7 @@ export default function CopilotPage() {
         sql: 'SELECT r.region_name, SUM(f.revenue) AS total_revenue FROM fact_sales f JOIN dim_region r ON f.region_id = r.region_id GROUP BY r.region_name ORDER BY total_revenue DESC;',
         summary: 'Revenue demonstrates strong consistent growth across all major sales channels and territories.',
         key_takeaways: [
-          'Top performing regions (North America East & West) generate over 60% of total revenue.',
+          'Top-performing regions (North and West India) generate over 60% of total revenue.',
           'Product demand shows strong repeat purchase frequency across Enterprise accounts.'
         ],
         recommended_chart: 'bar_chart'

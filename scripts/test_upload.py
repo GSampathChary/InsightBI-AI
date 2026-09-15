@@ -4,9 +4,9 @@ import httpx
 def test_upload_api():
     csv_data = (
         "order_id,date,customer_id,product_id,product_name,category,quantity,unit_price,unit_cost,discount,region_name\n"
-        "ORD-9901,2024-05-01,1,101,Enterprise Laptop Pro,Technology,10,1200.00,800.00,0.0,North America East\n"
-        "ORD-9902,2024-05-02,2,105,Cloud License Enterprise,Software,50,200.00,40.00,0.1,North America West\n"
-        "ORD-9903,2024-05-03,3,103,Ergonomic Office Chair,Furniture,20,350.00,200.00,0.05,South Region\n"
+        "ORD-9901,2024-05-01,1,101,Enterprise Laptop Pro,Technology,10,120000.00,80000.00,0.0,North India\n"
+        "ORD-9902,2024-05-02,2,105,Cloud License Enterprise,Software,50,20000.00,4000.00,0.1,West India\n"
+        "ORD-9903,2024-05-03,3,103,Ergonomic Office Chair,Furniture,20,35000.00,20000.00,0.05,South India\n"
     )
 
     files = {'file': ('test_sales.csv', csv_data.encode('utf-8'), 'text/csv')}

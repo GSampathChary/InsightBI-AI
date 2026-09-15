@@ -38,10 +38,10 @@ SAMPLE_PRODUCTS = [
 ]
 
 SAMPLE_REGIONS = [
-    {"region_id": 1, "region_name": "North", "state": "New York", "revenue": 780000.0, "profit": 288600.0, "orders": 3900, "customers": 2600, "profit_margin_percent": 37.0},
-    {"region_id": 2, "region_name": "West", "state": "California", "revenue": 690000.0, "profit": 255300.0, "orders": 3450, "customers": 2300, "profit_margin_percent": 37.0},
-    {"region_id": 3, "region_name": "South", "state": "Texas", "revenue": 540000.0, "profit": 189000.0, "orders": 2700, "customers": 1800, "profit_margin_percent": 35.0},
-    {"region_id": 4, "region_name": "Midwest", "state": "Illinois", "revenue": 448900.5, "profit": 159500.25, "orders": 2400, "customers": 1720, "profit_margin_percent": 35.53}
+    {"region_id": 1, "region_name": "North India", "state": "Delhi NCR", "revenue": 780000.0, "profit": 288600.0, "orders": 3900, "customers": 2600, "profit_margin_percent": 37.0},
+    {"region_id": 2, "region_name": "West India", "state": "Maharashtra", "revenue": 690000.0, "profit": 255300.0, "orders": 3450, "customers": 2300, "profit_margin_percent": 37.0},
+    {"region_id": 3, "region_name": "South India", "state": "Karnataka", "revenue": 540000.0, "profit": 189000.0, "orders": 2700, "customers": 1800, "profit_margin_percent": 35.0},
+    {"region_id": 4, "region_name": "East India", "state": "West Bengal", "revenue": 448900.5, "profit": 159500.25, "orders": 2400, "customers": 1720, "profit_margin_percent": 35.53}
 ]
 
 SAMPLE_INSIGHTS = [

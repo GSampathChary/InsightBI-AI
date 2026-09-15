@@ -25,29 +25,29 @@ os.makedirs(DATA_RAW_DIR, exist_ok=True)
 os.makedirs(DATA_PROCESSED_DIR, exist_ok=True)
 
 # -----------------------------------------------------------------------------
-# 1. Regions Generation (20 US States/Regions)
+# 1. Regions Generation (20 Indian states and territories)
 # -----------------------------------------------------------------------------
 REGIONS_DATA = [
-    {"region_id": 1, "region_name": "North", "country": "United States", "state": "New York", "city": "New York City", "territory": "Northeast"},
-    {"region_id": 2, "region_name": "North", "country": "United States", "state": "Massachusetts", "city": "Boston", "territory": "Northeast"},
-    {"region_id": 3, "region_name": "North", "country": "United States", "state": "Pennsylvania", "city": "Philadelphia", "territory": "Northeast"},
-    {"region_id": 4, "region_name": "South", "country": "United States", "state": "Florida", "city": "Miami", "territory": "Southeast"},
-    {"region_id": 5, "region_name": "South", "country": "United States", "state": "Georgia", "city": "Atlanta", "territory": "Southeast"},
-    {"region_id": 6, "region_name": "South", "country": "United States", "state": "North Carolina", "city": "Charlotte", "territory": "Southeast"},
-    {"region_id": 7, "region_name": "South", "country": "United States", "state": "Texas", "city": "Austin", "territory": "South Central"},
-    {"region_id": 8, "region_name": "South", "country": "United States", "state": "Texas", "city": "Dallas", "territory": "South Central"},
-    {"region_id": 9, "region_name": "Midwest", "country": "United States", "state": "Illinois", "city": "Chicago", "territory": "Midwest"},
-    {"region_id": 10, "region_name": "Midwest", "country": "United States", "state": "Ohio", "city": "Columbus", "territory": "Midwest"},
-    {"region_id": 11, "region_name": "Midwest", "country": "United States", "state": "Michigan", "city": "Detroit", "territory": "Midwest"},
-    {"region_id": 12, "region_name": "Midwest", "country": "United States", "state": "Minnesota", "city": "Minneapolis", "territory": "Midwest"},
-    {"region_id": 13, "region_name": "West", "country": "United States", "state": "California", "city": "Los Angeles", "territory": "Pacific"},
-    {"region_id": 14, "region_name": "West", "country": "United States", "state": "California", "city": "San Francisco", "territory": "Pacific"},
-    {"region_id": 15, "region_name": "West", "country": "United States", "state": "Washington", "city": "Seattle", "territory": "Pacific Northwest"},
-    {"region_id": 16, "region_name": "West", "country": "United States", "state": "Oregon", "city": "Portland", "territory": "Pacific Northwest"},
-    {"region_id": 17, "region_name": "West", "country": "United States", "state": "Colorado", "city": "Denver", "territory": "Mountain"},
-    {"region_id": 18, "region_name": "West", "country": "United States", "state": "Arizona", "city": "Phoenix", "territory": "Southwest"},
-    {"region_id": 19, "region_name": "West", "country": "United States", "state": "Nevada", "city": "Las Vegas", "territory": "Southwest"},
-    {"region_id": 20, "region_name": "West", "country": "United States", "state": "Utah", "city": "Salt Lake City", "territory": "Mountain"}
+    {"region_id": 1, "region_name": "North India", "country": "India", "state": "Delhi", "city": "New Delhi", "territory": "Delhi NCR"},
+    {"region_id": 2, "region_name": "North India", "country": "India", "state": "Haryana", "city": "Gurugram", "territory": "Delhi NCR"},
+    {"region_id": 3, "region_name": "North India", "country": "India", "state": "Uttar Pradesh", "city": "Noida", "territory": "Delhi NCR"},
+    {"region_id": 4, "region_name": "North India", "country": "India", "state": "Punjab", "city": "Chandigarh", "territory": "Punjab & Chandigarh"},
+    {"region_id": 5, "region_name": "West India", "country": "India", "state": "Maharashtra", "city": "Mumbai", "territory": "Mumbai Metropolitan Region"},
+    {"region_id": 6, "region_name": "West India", "country": "India", "state": "Maharashtra", "city": "Pune", "territory": "Maharashtra"},
+    {"region_id": 7, "region_name": "West India", "country": "India", "state": "Gujarat", "city": "Ahmedabad", "territory": "Gujarat"},
+    {"region_id": 8, "region_name": "West India", "country": "India", "state": "Rajasthan", "city": "Jaipur", "territory": "Rajasthan"},
+    {"region_id": 9, "region_name": "South India", "country": "India", "state": "Karnataka", "city": "Bengaluru", "territory": "Karnataka"},
+    {"region_id": 10, "region_name": "South India", "country": "India", "state": "Tamil Nadu", "city": "Chennai", "territory": "Tamil Nadu"},
+    {"region_id": 11, "region_name": "South India", "country": "India", "state": "Telangana", "city": "Hyderabad", "territory": "Telangana"},
+    {"region_id": 12, "region_name": "South India", "country": "India", "state": "Kerala", "city": "Kochi", "territory": "Kerala"},
+    {"region_id": 13, "region_name": "East India", "country": "India", "state": "West Bengal", "city": "Kolkata", "territory": "West Bengal"},
+    {"region_id": 14, "region_name": "East India", "country": "India", "state": "Odisha", "city": "Bhubaneswar", "territory": "Odisha"},
+    {"region_id": 15, "region_name": "East India", "country": "India", "state": "Bihar", "city": "Patna", "territory": "Bihar"},
+    {"region_id": 16, "region_name": "East India", "country": "India", "state": "Assam", "city": "Guwahati", "territory": "North East"},
+    {"region_id": 17, "region_name": "Central India", "country": "India", "state": "Madhya Pradesh", "city": "Indore", "territory": "Madhya Pradesh"},
+    {"region_id": 18, "region_name": "Central India", "country": "India", "state": "Chhattisgarh", "city": "Raipur", "territory": "Chhattisgarh"},
+    {"region_id": 19, "region_name": "North India", "country": "India", "state": "Uttarakhand", "city": "Dehradun", "territory": "Uttarakhand"},
+    {"region_id": 20, "region_name": "North India", "country": "India", "state": "Himachal Pradesh", "city": "Shimla", "territory": "Himachal Pradesh"}
 ]
 
 # -----------------------------------------------------------------------------

@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS dim_date (
 CREATE TABLE IF NOT EXISTS dim_region (
     region_id SERIAL PRIMARY KEY,
     region_name VARCHAR(50) NOT NULL,
-    country VARCHAR(50) NOT NULL DEFAULT 'United States',
+    country VARCHAR(50) NOT NULL DEFAULT 'India',
     state VARCHAR(50) NOT NULL,
     city VARCHAR(50) NOT NULL,
     territory VARCHAR(50) NOT NULL,

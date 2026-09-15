@@ -61,7 +61,7 @@ Three security roles are defined:
 - **Visuals**:
   - Line Chart: Monthly Revenue & Profit Trend (with YoY growth toggle).
   - Donut Chart: Revenue Breakdown by Product Category.
-  - Map Visual: Regional Revenue Density across US States.
+  - Map Visual: Regional Revenue Density across Indian states.
   - KPI Cards: Top Performing Region & Top Selling SKU.
 
 ### Page 2: Sales Performance & Financial Analytics

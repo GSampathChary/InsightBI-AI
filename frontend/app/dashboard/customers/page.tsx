@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Users, Crown, ShieldAlert, UserX } from 'lucide-react';
 import DataModeNotice from '../../components/DataModeNotice';
+import { formatINR } from '../../utils/format';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
@@ -105,7 +106,7 @@ export default function CustomersPage() {
                 <td className="p-3 font-semibold text-slate-200">#{cust.customer_id} ({cust.first_name || 'Customer'} {cust.last_name || ''})</td>
                 <td className="p-3">{cust.recency_days} days ago</td>
                 <td className="p-3">{cust.frequency_count} orders</td>
-                <td className="p-3 font-bold text-cyan-400">${cust.monetary_value?.toLocaleString()}</td>
+                <td className="p-3 font-bold text-cyan-400">{formatINR(cust.monetary_value)}</td>
                 <td className="p-3 font-mono text-indigo-400">{cust.rfm_score}</td>
                 <td className="p-3">
                   <span className={`px-2.5 py-1 rounded font-semibold text-[10px] ${cust.rfm_segment?.includes('VIP') ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' : 'bg-slate-800 text-slate-300'}`}>

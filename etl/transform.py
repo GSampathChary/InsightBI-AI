@@ -20,7 +20,7 @@ class DataTransformer:
         df = df_regions.copy()
         df["region_name"] = df["region_name"].astype(str).str.strip()
         df["state"] = df["state"].astype(str).str.strip()
-        df["country"] = df["country"].fillna("United States").astype(str).str.strip()
+        df["country"] = df["country"].fillna("India").astype(str).str.strip()
         return df
 
     def transform_customers(self, df_customers: pd.DataFrame) -> pd.DataFrame:

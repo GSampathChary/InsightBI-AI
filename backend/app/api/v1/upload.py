@@ -78,8 +78,8 @@ async def upload_csv_dataset(file: UploadFile = File(...)) -> Dict[str, Any]:
             df["region_id"] = (df["customer_id"] % 4) + 1
 
         if "region_name" not in df.columns:
-            region_map = {1: "North America East", 2: "North America West", 3: "South Region", 4: "Midwest Region"}
-            df["region_name"] = df["region_id"].map(region_map).fillna("North America East")
+            region_map = {1: "North India", 2: "West India", 3: "South India", 4: "East India"}
+            df["region_name"] = df["region_id"].map(region_map).fillna("North India")
 
         # Quantities, Prices, Costs, Revenues, Profits
         if "quantity" in df.columns:

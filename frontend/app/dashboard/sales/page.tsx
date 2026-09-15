@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import DataModeNotice from '../../components/DataModeNotice';
+import { formatINR, formatIndianNumber } from '../../utils/format';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
@@ -25,10 +26,10 @@ export default function SalesPage() {
       } catch {
         setIsDemo(true);
         setRegions([
-          { region_name: 'North America East', state: 'New York', revenue: 780000, profit: 288600, orders: 3900, profit_margin_percent: 37.0 },
-          { region_name: 'North America West', state: 'California', revenue: 690000, profit: 255300, orders: 3450, profit_margin_percent: 37.0 },
-          { region_name: 'South Region', state: 'Texas', revenue: 540000, profit: 189000, orders: 2700, profit_margin_percent: 35.0 },
-          { region_name: 'Midwest Region', state: 'Illinois', revenue: 448900, profit: 159500, orders: 2400, profit_margin_percent: 35.5 }
+          { region_name: 'North India', state: 'Delhi NCR', revenue: 780000, profit: 288600, orders: 3900, profit_margin_percent: 37.0 },
+          { region_name: 'West India', state: 'Maharashtra', revenue: 690000, profit: 255300, orders: 3450, profit_margin_percent: 37.0 },
+          { region_name: 'South India', state: 'Karnataka', revenue: 540000, profit: 189000, orders: 2700, profit_margin_percent: 35.0 },
+          { region_name: 'East India', state: 'West Bengal', revenue: 448900, profit: 159500, orders: 2400, profit_margin_percent: 35.5 }
         ]);
       } finally {
         setLoading(false);
@@ -53,9 +54,9 @@ export default function SalesPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
               <XAxis dataKey="region_name" stroke="#94a3b8" fontSize={12} />
               <YAxis stroke="#94a3b8" fontSize={12} />
-              <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', color: '#f8fafc' }} />
-              <Bar dataKey="revenue" fill="#06b6d4" radius={[4, 4, 0, 0]} name="Revenue ($)" />
-              <Bar dataKey="profit" fill="#6366f1" radius={[4, 4, 0, 0]} name="Profit ($)" />
+              <Tooltip formatter={(value: number) => formatINR(value)} contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', color: '#f8fafc' }} />
+              <Bar dataKey="revenue" fill="#06b6d4" radius={[4, 4, 0, 0]} name="Revenue (₹)" />
+              <Bar dataKey="profit" fill="#6366f1" radius={[4, 4, 0, 0]} name="Profit (₹)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -80,10 +81,10 @@ export default function SalesPage() {
             {regions.map((reg, idx) => (
               <tr key={idx} className="hover:bg-slate-800/50">
                 <td className="p-3 font-semibold text-slate-200">{reg.region_name}</td>
-                <td className="p-3">{reg.state || 'United States'}</td>
-                <td className="p-3">{reg.orders?.toLocaleString()}</td>
-                <td className="p-3 font-bold text-cyan-400">${reg.revenue?.toLocaleString()}</td>
-                <td className="p-3 text-emerald-400">${reg.profit?.toLocaleString()}</td>
+                <td className="p-3">{reg.state || 'India'}</td>
+                <td className="p-3">{formatIndianNumber(reg.orders)}</td>
+                <td className="p-3 font-bold text-cyan-400">{formatINR(reg.revenue)}</td>
+                <td className="p-3 text-emerald-400">{formatINR(reg.profit)}</td>
                 <td className="p-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold">
                     {reg.profit_margin_percent || reg.margin_percent || 36.5}%

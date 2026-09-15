@@ -45,14 +45,14 @@ RETURN
     DIVIDE([Total Revenue] - PreviousMonthRevenue, PreviousMonthRevenue)
 ```
 
-Format revenue and profit as currency, percentages as percentages, and counts as whole numbers. Measures—not calculated columns—should perform aggregations so visuals remain responsive as data grows.
+Format revenue and profit as Indian Rupees (`₹ #,##0`), percentages as percentages, and counts as whole numbers using the Indian digit grouping convention. Measures—not calculated columns—should perform aggregations so visuals remain responsive as data grows.
 
 ## 5. Recommended report pages
 
 | Page | Audience | Core visuals | Decision supported |
 | --- | --- | --- | --- |
 | Executive overview | Leadership | KPI cards, monthly revenue/profit trend, insight cards | Is performance healthy and where should attention go? |
-| Sales and regions | Sales leadership | Revenue/profit by region, territory ranking, month trend | Which territory should receive investment? |
+| Sales and regions | Sales leadership | Revenue/profit by Indian region, state ranking, month trend | Which territory should receive investment? |
 | Customers | Growth and retention | RFM segment distribution, customer roster, recency trend | Who should be retained or reactivated? |
 | Products | Merchandising | Top products, category margin, Pareto contribution | Which products should be promoted or reviewed? |
 | Forecast and risk | Operations | Actual versus forecast, anomaly table, confidence bounds | Where is intervention needed before results deteriorate? |
