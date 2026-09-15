@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Package, Tag, Percent } from 'lucide-react';
+import DataModeNotice from '../../components/DataModeNotice';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDemo, setIsDemo] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,10 +18,12 @@ export default function ProductsPage() {
         if (res.ok) {
           const data = await res.json();
           setProducts(data);
+          setIsDemo(false);
         } else {
           throw new Error('API Error');
         }
       } catch {
+        setIsDemo(true);
         setProducts([
           { product_id: 101, product_name: 'Enterprise Laptop Pro 15', category: 'Technology', revenue: 485000, profit: 169750, profit_margin_percent: 35.0 },
           { product_id: 102, product_name: 'UltraWide Monitor 34-Inch', category: 'Technology', revenue: 342000, profit: 136800, profit_margin_percent: 40.0 },
@@ -40,6 +44,7 @@ export default function ProductsPage() {
         <h2 className="text-2xl font-bold text-slate-900">Product Analytics & Catalog Performance</h2>
         <p className="text-sm text-slate-500">Pareto product sales, SKU profit margins, and inventory performance.</p>
       </div>
+      {!loading && <DataModeNotice isDemo={isDemo} />}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center gap-4">

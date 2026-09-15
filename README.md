@@ -107,12 +107,13 @@ python scripts/verify_deployment.py
 
 ## 📖 Technical Documentation
 
-- 📐 [System Architecture Guide](docs/ARCHITECTURE.md)
+- 📐 [System Architecture Guide](docs/architecture.md)
 - 🗄️ [Data Warehouse & Schema Reference](docs/DATABASE.md)
 - 📊 [Power BI & DAX Metrics Handbook](docs/POWER_BI.md)
+- 🎯 [Power BI Portfolio Walkthrough](docs/POWER_BI_PORTFOLIO_GUIDE.md)
 - 🤖 [Machine Learning & AI Copilot Technical Guide](docs/AI_ML.md)
 - 🔌 [REST API Reference Guide](docs/API.md)
-- 🐳 [Docker & Production Deployment Guide](docs/DEPLOYMENT.md)
+- 🐳 [Docker & Production Deployment Guide](docs/deployment.md)
 
 ---
 

@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Users, Crown, ShieldAlert, UserX } from 'lucide-react';
+import DataModeNotice from '../../components/DataModeNotice';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
 export default function CustomersPage() {
   const [segments, setSegments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDemo, setIsDemo] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,10 +18,12 @@ export default function CustomersPage() {
         if (res.ok) {
           const data = await res.json();
           setSegments(data);
+          setIsDemo(false);
         } else {
           throw new Error('API Error');
         }
       } catch {
+        setIsDemo(true);
         setSegments([
           { customer_id: 1, customer_code: 'CUST-000001', first_name: 'James', last_name: 'Smith', recency_days: 12, frequency_count: 28, monetary_value: 14500.5, rfm_score: 555, rfm_segment: 'VIP / Champions' },
           { customer_id: 2, customer_code: 'CUST-000002', first_name: 'Jennifer', last_name: 'Johnson', recency_days: 18, frequency_count: 19, monetary_value: 9820.0, rfm_score: 544, rfm_segment: 'VIP / Champions' },
@@ -40,6 +44,7 @@ export default function CustomersPage() {
         <h2 className="text-2xl font-bold text-slate-900">Customer Segmentation & RFM Analytics</h2>
         <p className="text-sm text-slate-500">Recency, Frequency, Monetary clustering and customer retention insights.</p>
       </div>
+      {!loading && <DataModeNotice isDemo={isDemo} />}
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-1">

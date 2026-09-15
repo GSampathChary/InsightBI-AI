@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, DollarSign, ShoppingBag, Users, Lightbulb, TrendingUp, Upload, CheckCircle2, Database, Clock } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import DataModeNotice from '../components/DataModeNotice';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 const fallback = {
@@ -15,7 +16,15 @@ const money = (value?: number) => value == null ? '—' : new Intl.NumberFormat(
 
 export default function ExecutiveOverviewPage() {
   const [data, setData] = useState<any>(null);
-  useEffect(() => { fetch(`${API_BASE}/api/v1/dashboard/summary`).then(r => r.ok ? r.json() : Promise.reject()).then(setData).catch(() => setData(fallback)); }, []);
+  const [isDemo, setIsDemo] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`${API_BASE}/api/v1/dashboard/summary`, { signal: controller.signal })
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('API request failed')))
+      .then(data => { setData(data); setIsDemo(false); })
+      .catch(error => { if (error.name !== 'AbortError') { setData(fallback); setIsDemo(true); } });
+    return () => controller.abort();
+  }, []);
   if (!data) return <div className="py-24 text-center text-sm text-slate-500">Loading your report…</div>;
   const kpis = data.kpis || {}; const trends = data.trends || []; const insights = data.business_insights || [];
   const dataset = data.dataset || { source: 'sample data', row_count: 0, storage: 'demo', refresh_mode: 'on demand' };
@@ -26,7 +35,8 @@ export default function ExecutiveOverviewPage() {
     { label: 'Active customers', value: kpis.total_customers?.toLocaleString(), detail: 'Across all territories', icon: Users, tone: 'bg-violet-50 text-violet-700' },
   ];
   return <div className="space-y-6 animate-fadeIn">
-    <section className="flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p className="text-xs font-semibold uppercase tracking-wider text-[#8a6500]">Executive dashboard</p><h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">Business performance at a glance</h1><p className="mt-1 text-sm text-slate-500">A simple starting point for the metrics that matter most.</p></div><div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> Data refreshed and ready</div></section>
+    <section className="flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p className="text-xs font-semibold uppercase tracking-wider text-[#8a6500]">Executive dashboard</p><h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">Business performance at a glance</h1><p className="mt-1 text-sm text-slate-500">A simple starting point for the metrics that matter most.</p></div><div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"><CheckCircle2 className={`h-4 w-4 ${isDemo ? 'text-amber-600' : 'text-emerald-600'}`} /> {isDemo ? 'Demo workspace' : 'Live data ready'}</div></section>
+    <DataModeNotice isDemo={isDemo} />
     <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">{cards.map(card => { const Icon = card.icon; return <div key={card.label} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"><div className="flex items-start justify-between"><p className="text-xs font-semibold text-slate-500">{card.label}</p><div className={`grid h-8 w-8 place-items-center rounded-md ${card.tone}`}><Icon className="h-4 w-4" /></div></div><p className="mt-3 text-2xl font-bold tracking-tight text-slate-900">{card.value}</p><p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-emerald-700"><ArrowUpRight className="h-3.5 w-3.5" />{card.detail}</p></div> })}</section>
     <section className="grid gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-3"><div className="flex items-center gap-3"><div className="grid h-9 w-9 place-items-center rounded-md bg-slate-100"><Database className="h-4 w-4 text-slate-600" /></div><div><p className="text-xs font-bold text-slate-800">{dataset.row_count?.toLocaleString() || 'Demo'} records in model</p><p className="text-[11px] text-slate-500">{dataset.source} · {dataset.file_size_mb ? `${dataset.file_size_mb} MB` : dataset.storage}</p></div></div><div className="flex items-center gap-3 border-t border-slate-100 pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0"><div className="grid h-9 w-9 place-items-center rounded-md bg-sky-50"><Clock className="h-4 w-4 text-sky-700" /></div><div><p className="text-xs font-bold text-slate-800">Fast aggregate reports</p><p className="text-[11px] text-slate-500">{dataset.refresh_mode}</p></div></div><div className="flex items-center gap-3 border-t border-slate-100 pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0"><div className="grid h-9 w-9 place-items-center rounded-md bg-[#fff5c5]"><CheckCircle2 className="h-4 w-4 text-[#886500]" /></div><div><p className="text-xs font-bold text-slate-800">Built for focused analysis</p><p className="text-[11px] text-slate-500">Reports load summaries, not raw tables</p></div></div></section>
     <section className="grid gap-5 xl:grid-cols-3"><div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm xl:col-span-2"><div className="mb-5 flex items-start justify-between"><div><h2 className="text-sm font-bold text-slate-800">Revenue and profit trend</h2><p className="mt-1 text-xs text-slate-500">Monthly performance over the selected period</p></div><div className="flex gap-3 text-[11px] text-slate-500"><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#f2c811]" />Revenue</span><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#3267d6]" />Profit</span></div></div><div className="h-72"><ResponsiveContainer width="100%" height="100%"><LineChart data={trends}><CartesianGrid vertical={false} stroke="#e8edf2" /><XAxis dataKey="year_month" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b' }} /><YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b' }} /><Tooltip contentStyle={{ borderRadius: 6, borderColor: '#e2e8f0', fontSize: 12 }} /><Line type="monotone" dataKey="revenue" stroke="#e0ae00" strokeWidth={3} dot={false} /><Line type="monotone" dataKey="profit" stroke="#3267d6" strokeWidth={3} dot={false} /></LineChart></ResponsiveContainer></div></div>

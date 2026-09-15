@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import DataModeNotice from '../../components/DataModeNotice';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
 export default function SalesPage() {
   const [regions, setRegions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDemo, setIsDemo] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,10 +18,12 @@ export default function SalesPage() {
         if (res.ok) {
           const data = await res.json();
           setRegions(data);
+          setIsDemo(false);
         } else {
           throw new Error('API Error');
         }
       } catch {
+        setIsDemo(true);
         setRegions([
           { region_name: 'North America East', state: 'New York', revenue: 780000, profit: 288600, orders: 3900, profit_margin_percent: 37.0 },
           { region_name: 'North America West', state: 'California', revenue: 690000, profit: 255300, orders: 3450, profit_margin_percent: 37.0 },
@@ -39,6 +43,7 @@ export default function SalesPage() {
         <h2 className="text-2xl font-bold text-slate-900">Sales & Regional Analytics</h2>
         <p className="text-sm text-slate-500">Territory performance breakdown, regional revenue, and order volume.</p>
       </div>
+      {!loading && <DataModeNotice isDemo={isDemo} />}
 
       <div className="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4">
         <h3 className="font-semibold text-slate-200">Regional Revenue Breakdown</h3>
