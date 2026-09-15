@@ -75,7 +75,7 @@ export default function CustomersPage() {
             <span className="text-xs font-bold">20% Share</span>
           </div>
           <p className="text-lg font-bold text-slate-100">At-Risk / Lost</p>
-          <p className="text-xs text-slate-400">Inactive > 90 days.</p>
+          <p className="text-xs text-slate-400">Inactive &gt; 90 days.</p>
         </div>
       </div>
 
