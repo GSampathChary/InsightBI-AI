@@ -54,7 +54,7 @@ export default function CopilotPage() {
         <p className="text-sm text-slate-500">Ask business analytics questions in plain natural language.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row">
         <div className="relative flex-1">
           <input
             type="text"
@@ -68,7 +68,7 @@ export default function CopilotPage() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold px-6 rounded-xl flex items-center gap-2 text-sm transition shadow-lg shadow-cyan-500/20"
+          className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold px-6 py-3 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-cyan-500/20"
         >
           {loading ? 'Analyzing...' : 'Ask Copilot'}
           <Send className="w-4 h-4" />
@@ -78,7 +78,7 @@ export default function CopilotPage() {
       {response && (
         <div className="space-y-6 animate-fadeIn">
           <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-400">
+            <div className="flex flex-col items-start justify-between gap-2 text-xs font-semibold text-slate-400 sm:flex-row sm:items-center">
               <span className="flex items-center gap-1.5 text-cyan-400">
                 <Code className="w-4 h-4" /> Generated SQL Query
               </span>

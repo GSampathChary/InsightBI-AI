@@ -83,7 +83,7 @@ export default function ProductsPage() {
         <div className="p-4 border-b border-slate-800">
           <h3 className="font-semibold text-slate-200">Top Performing Products by Revenue</h3>
         </div>
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto"><table className="w-full min-w-[650px] text-left border-collapse">
           <thead>
             <tr className="bg-slate-950 border-b border-slate-800 text-xs font-semibold text-slate-400 uppercase">
               <th className="p-3">Product Name</th>
@@ -108,7 +108,7 @@ export default function ProductsPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   );

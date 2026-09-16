@@ -84,8 +84,8 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 animate-fadeIn">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg p-6 space-y-6 shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4 animate-fadeIn">
+      <div className="max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-slate-800 bg-slate-900 p-4 space-y-5 shadow-2xl relative sm:max-h-[calc(100dvh-2rem)] sm:p-6 sm:space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
             />
           </label>
 
-          <div className="flex justify-between items-center text-xs text-slate-400">
+          <div className="flex flex-col gap-2 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
             <span>Need sample format?</span>
             <button
               onClick={downloadSampleTemplate}
@@ -140,7 +140,7 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
             <div className="flex items-center gap-2 font-bold text-emerald-400">
               <CheckCircle className="w-4 h-4" /> {result.message}
             </div>
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-emerald-500/20 text-slate-300">
+            <div className="grid grid-cols-1 gap-2 pt-2 border-t border-emerald-500/20 text-slate-300 sm:grid-cols-3">
               <div><span className="text-slate-400">Records:</span> {result.row_count?.toLocaleString()}</div>
               <div><span className="text-slate-400">Revenue:</span> {formatINR(result.total_revenue)}</div>
               <div><span className="text-slate-400">Profit:</span> {formatINR(result.total_profit)}</div>
@@ -156,17 +156,17 @@ export default function DataUploadModal({ isOpen, onClose, onUploadSuccess }: Da
         )}
 
         {/* Actions */}
-        <div className="flex justify-end gap-3 border-t border-slate-800 pt-4">
+        <div className="flex flex-col-reverse gap-3 border-t border-slate-800 pt-4 sm:flex-row sm:justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition"
+            className="w-full px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition sm:w-auto"
           >
             Cancel
           </button>
           <button
             onClick={handleUpload}
             disabled={!file || uploading}
-            className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 disabled:opacity-50 text-white font-semibold px-5 py-2.5 rounded-xl flex items-center gap-2 text-xs transition shadow-lg shadow-cyan-500/20"
+            className="w-full justify-center bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 disabled:opacity-50 text-white font-semibold px-5 py-2.5 rounded-xl flex items-center gap-2 text-xs transition shadow-lg shadow-cyan-500/20 sm:w-auto"
           >
             {uploading ? (
               <>

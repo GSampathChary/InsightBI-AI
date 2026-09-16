@@ -16,16 +16,16 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#090d16] text-gray-100 flex flex-col justify-between selection:bg-blue-600 selection:text-white">
       {/* Top Header Navigation */}
-      <header className="border-b border-gray-800/60 bg-[#090d16]/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+      <header className="border-b border-gray-800/60 bg-[#090d16]/80 backdrop-blur-md sticky top-0 z-50 flex items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center space-x-3">
           <div className="bg-gradient-to-tr from-blue-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg shadow-blue-500/20">
             <BrainCircuit className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-blue-400">
+            <span className="text-base font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-blue-400 sm:text-xl">
               InsightBI AI
             </span>
-            <span className="ml-2 text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono">
+            <span className="ml-1 text-[10px] px-1.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono sm:ml-2 sm:text-xs sm:px-2">
               v0.1.0
             </span>
           </div>
@@ -41,9 +41,9 @@ export default function LandingPage() {
         <div className="flex items-center space-x-4">
           <Link 
             href="/dashboard" 
-            className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition flex items-center space-x-2 shadow-lg shadow-blue-600/30"
+            className="px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition flex items-center space-x-2 shadow-lg shadow-blue-600/30 sm:px-4"
           >
-            <span>Launch Platform</span>
+            <span className="hidden sm:inline">Launch Platform</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -51,13 +51,13 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <main className="flex-1">
-        <section className="relative px-6 pt-20 pb-16 max-w-6xl mx-auto text-center overflow-hidden">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium mb-8">
+        <section className="relative max-w-6xl mx-auto overflow-hidden px-4 pb-12 pt-14 text-center sm:px-6 sm:pb-16 sm:pt-20">
+          <div className="inline-flex max-w-full items-center space-x-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium mb-8">
             <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>AI-Powered Business Intelligence & Data Warehouse Engine</span>
+            <span className="text-left">AI-Powered Business Intelligence & Data Warehouse Engine</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
             Turn Business Data Into <br className="hidden sm:inline" />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">
               Intelligent Decisions
@@ -87,7 +87,7 @@ export default function LandingPage() {
         </section>
 
         {/* Feature Cards Grid */}
-        <section id="features" className="px-6 py-16 max-w-6xl mx-auto">
+        <section id="features" className="max-w-6xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
               Full-Stack Business Intelligence Capabilities

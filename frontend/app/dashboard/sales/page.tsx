@@ -46,9 +46,9 @@ export default function SalesPage() {
       </div>
       {!loading && <DataModeNotice isDemo={isDemo} />}
 
-      <div className="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4">
+      <div className="bg-slate-900 border border-slate-800 p-4 sm:p-5 rounded-xl space-y-4">
         <h3 className="font-semibold text-slate-200">Regional Revenue Breakdown</h3>
-        <div className="h-72 w-full">
+        <div className="h-56 w-full sm:h-72">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={regions}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -66,7 +66,7 @@ export default function SalesPage() {
         <div className="p-4 border-b border-slate-800">
           <h3 className="font-semibold text-slate-200">Territory Leaderboard</h3>
         </div>
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto"><table className="w-full min-w-[700px] text-left border-collapse">
           <thead>
             <tr className="bg-slate-950 border-b border-slate-800 text-xs font-semibold text-slate-400 uppercase">
               <th className="p-3">Region</th>
@@ -93,7 +93,7 @@ export default function SalesPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   );
